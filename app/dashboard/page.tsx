@@ -1,16 +1,17 @@
-"use client"
+'use client'
 
-import { useSearchParams } from "next/navigation"
+import { useSearchParams } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Heart, CheckCircle, TrendingUp, Calendar, User } from "lucide-react"
+import { Heart, CheckCircle, TrendingUp, Calendar, User } from 'lucide-react'
 import Link from "next/link"
+import { Suspense } from 'react'
 
-export default function DashboardPage() {
+function DashboardContent() {
   const searchParams = useSearchParams()
-  const connected = searchParams.get("connected")
-  const username = searchParams.get("username")
+  const connected = searchParams.get('connected')
+  const username = searchParams.get('username')
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 p-4">
@@ -62,9 +63,7 @@ export default function DashboardPage() {
               {connected ? (
                 <div>
                   <p className="text-sm text-gray-600 mb-2">Connected as: {username}</p>
-                  <Button variant="outline" size="sm">
-                    Manage Connection
-                  </Button>
+                  <Button variant="outline" size="sm">Manage Connection</Button>
                 </div>
               ) : (
                 <div>
@@ -114,7 +113,9 @@ export default function DashboardPage() {
         <Card>
           <CardHeader>
             <CardTitle>Getting Started with MyMoodSync</CardTitle>
-            <CardDescription>Follow these steps to make the most of your mood tracking journey</CardDescription>
+            <CardDescription>
+              Follow these steps to make the most of your mood tracking journey
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -125,23 +126,23 @@ export default function DashboardPage() {
                 <div>
                   <h4 className="font-medium">Connect Your TikTok Account</h4>
                   <p className="text-sm text-gray-600">
-                    {connected
-                      ? "✅ Complete! Your TikTok account is connected."
-                      : "Link your TikTok account to start syncing your social activity."}
+                    {connected ? '✅ Complete! Your TikTok account is connected.' : 'Link your TikTok account to start syncing your social activity.'}
                   </p>
                 </div>
               </div>
-
+              
               <div className="flex items-start gap-3">
                 <div className="w-6 h-6 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-sm font-semibold">
                   2
                 </div>
                 <div>
                   <h4 className="font-medium">Start Mood Tracking</h4>
-                  <p className="text-sm text-gray-600">Begin logging your daily moods and see patterns over time.</p>
+                  <p className="text-sm text-gray-600">
+                    Begin logging your daily moods and see patterns over time.
+                  </p>
                 </div>
               </div>
-
+              
               <div className="flex items-start gap-3">
                 <div className="w-6 h-6 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-sm font-semibold">
                   3
@@ -158,5 +159,13 @@ export default function DashboardPage() {
         </Card>
       </div>
     </div>
+  )
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={<div>Loading dashboard...</div>}>
+      <DashboardContent />
+    </Suspense>
   )
 }
