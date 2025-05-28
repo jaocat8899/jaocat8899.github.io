@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Privacy Policy - MyMoodSync</title>
+</head>
+<body style="font-family: sans-serif; max-width: 700px; margin: 40px auto; line-height: 1.6;">
+    <h1>Privacy Policy</h1>
+    <p>MyMoodSync respects your privacy. We do not collect, store, or share any personally identifiable information.</p>
+    <p>The app only uses the TikTok API to retrieve authorized public information as permitted by the user. No data is used for third-party purposes.</p>
+    <p>By using this application, you consent to the practices outlined in this Privacy Policy.</p>
+</body>
+</html>
